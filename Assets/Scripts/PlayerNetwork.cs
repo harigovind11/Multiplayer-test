@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 
 public class PlayerNetwork : NetworkBehaviour
 {
+    [SerializeField] private Transform spawnedObjectPrefab;
+    private Transform spawnedobjectTransform;
     private NetworkVariable<MyCustomData> randomNumber = new NetworkVariable<MyCustomData>(new MyCustomData
     {
         _int = 56,
@@ -41,7 +43,16 @@ public class PlayerNetwork : NetworkBehaviour
         
         if(Input.GetKeyDown(KeyCode.T))
         {
-            randomNumber.Value =new MyCustomData{_int = 64,_bool = false,message = "Hello"};
+          spawnedobjectTransform =   Instantiate(spawnedObjectPrefab);
+            spawnedobjectTransform.GetComponent<NetworkObject>().Spawn();
+            // TestServerRpc();
+            // TestClientRpc();
+            // randomNumber.Value =new MyCustomData{_int = 64,_bool = false,message = "Hello"};
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {      spawnedobjectTransform.GetComponent<NetworkObject>().Despawn();
+            // Destroy(spawnedobjectTransform.gameObject);
         }
         Vector3 moveDirection = new Vector3(0, 0, 0);
 
@@ -52,5 +63,16 @@ public class PlayerNetwork : NetworkBehaviour
         
         float moveSpeed = 5f;
         transform.position += moveDirection * moveSpeed * Time.deltaTime;
+    }
+
+    [ServerRpc]
+    void TestServerRpc()
+    {
+        Debug.Log("Test ServerRpc " + OwnerClientId );
+    }
+    [ClientRpc]
+    void TestClientRpc()
+    {
+        Debug.Log("Test ClientRpc ");
     }
 }
