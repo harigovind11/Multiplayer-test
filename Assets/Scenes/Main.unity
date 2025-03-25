@@ -597,7 +597,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4845276930943762971, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000045776367
+      value: -0.000030517578
       objectReference: {fileID: 0}
     - target: {fileID: 4845637959249703711, guid: 2da3dcc22749e7f4280737786d898334, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1548,7 +1548,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 989748174}
-    PlayerPrefab: {fileID: 7108327782996866760, guid: 6d32df9b497480d4fabcaba058cc83d8, type: 3}
+    PlayerPrefab: {fileID: 7936669535516967916, guid: dc36301a5545db64496284bf5c0110dd, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: b437cd186a9929446b7fa8dcbe833b5d, type: 2}
